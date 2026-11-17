@@ -1,0 +1,128 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Bricolage Grotesque", "Arial Narrow", sans-serif;
+  --font-sans: "Outfit", system-ui, sans-serif;
+
+  --color-bone: #f3efe4;
+  --color-ink: #141412;
+  --color-paper: #fffcf6;
+  --color-mute: #5e5952;
+  --color-acid: #e4ff47;
+
+  --radius-sm: 0.375rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1.25rem;
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background: var(--color-bone);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-size: 1.0625rem;
+    line-height: 1.5;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled),
+  summary {
+    cursor: pointer;
+  }
+
+  summary::-webkit-details-marker {
+    display: none;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  ::selection {
+    background: var(--color-acid);
+    color: var(--color-ink);
+  }
+}
+
+@keyframes pitiusas-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-track {
+  animation: pitiusas-marquee 32s linear infinite;
+}
+
+.hazard {
+  background: repeating-linear-gradient(
+    -18deg,
+    var(--color-ink) 0 14px,
+    var(--color-acid) 14px 28px
+  );
+}
+
+.legal-copy {
+  color: color-mix(in srgb, var(--color-ink) 80%, transparent);
+  line-height: 1.6;
+}
+
+.legal-copy h2 {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--color-ink);
+}
+
+.legal-copy p {
+  margin-top: 1rem;
+}
+
+.legal-copy ul {
+  margin-top: 1rem;
+  list-style: disc;
+  padding-left: 1.25rem;
+}
+
+.legal-copy li + li {
+  margin-top: 0.5rem;
+}
+
+.legal-copy a {
+  color: var(--color-ink);
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, var(--color-ink) 30%, transparent);
+  text-underline-offset: 4px;
+}
+
+.legal-copy strong {
+  font-weight: 600;
+  color: var(--color-ink);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .marquee-track {
+    animation: none;
+  }
+}
